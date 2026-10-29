@@ -1,22 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f4f0" />
+  <meta name="description" content="Noah Jaskiewicz — Software Engineer at Google." />
   <title>Noah Jaskiewicz</title>
-  <meta name="description" content="Noah Jaskiewicz — software engineer at Stripe and Rutgers computer science graduate." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
   <style>
     :root {
-      --bg: #f4f1e8;
-      --ink: #111111;
-      --muted: #5d5a52;
-      --line: #111111;
-      --accent: #635bff;
-      --soft: #e6e1d3;
+      --background: #f5f4f0;
+      --text: #181818;
+      --muted: #65645f;
+      --faint: #96958e;
+      --line: #d4d2ca;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
@@ -26,533 +28,388 @@
 
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.15;
+      min-width: 320px;
+      background: var(--background);
+      color: var(--text);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     a {
       color: inherit;
-      text-decoration: none;
     }
 
-    a:hover {
-      background: var(--ink);
-      color: var(--bg);
+    a:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 6px;
     }
 
     .page {
-      min-height: 100vh;
-      border: 2px solid var(--line);
-      margin: 12px;
-      overflow: hidden;
+      width: min(100% - 96px, 1120px);
+      min-height: 100svh;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    /* Header */
+
+    .masthead {
+      padding-top: 39px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 14px 18px;
-      background: var(--bg);
-      border-bottom: 2px solid var(--line);
-      text-transform: uppercase;
-      font-size: 13px;
-      letter-spacing: 0.04em;
+      gap: 24px;
     }
 
-    nav {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+    .monogram {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.055em;
+      text-decoration: none;
     }
 
-    nav a,
-    .pill,
-    .button {
-      border: 2px solid var(--line);
-      padding: 8px 10px;
-      background: transparent;
+    .location {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.095em;
     }
 
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
-      border-bottom: 2px solid var(--line);
-      min-height: 72vh;
-    }
+    /* Main content */
 
-    .hero-main {
-      padding: clamp(28px, 6vw, 80px);
+    main {
+      width: 100%;
+      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 60px;
-      min-width: 0;
+      justify-content: center;
+      padding: 100px 0 105px;
     }
 
-    .eyebrow {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
-    h1 {
+    .intro h1 {
       margin: 0;
-      font-size: clamp(58px, 9vw, 150px);
-      line-height: 0.82;
-      letter-spacing: -0.09em;
-      text-transform: uppercase;
-      max-width: 100%;
+      font-size: clamp(58px, 8.4vw, 122px);
+      font-weight: 500;
+      letter-spacing: -0.078em;
+      line-height: 0.98;
     }
-    .nowrap {
-  white-space: nowrap; /* FIX: keeps Jaskiewicz together */
-}
 
-    .subtitle {
-      max-width: 780px;
+    .role {
       margin: 28px 0 0;
-      font-size: clamp(22px, 3vw, 42px);
-      letter-spacing: -0.045em;
-    }
-
-    .hero-side {
-      border-left: 2px solid var(--line);
-      display: grid;
-      grid-template-rows: 1fr auto;
-      min-height: 100%;
-      min-width: 0;
-    }
-
-    .role-card {
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 32px;
-      background:
-        linear-gradient(90deg, rgba(17,17,17,0.06) 1px, transparent 1px),
-        linear-gradient(rgba(17,17,17,0.06) 1px, transparent 1px);
-      background-size: 18px 18px;
-    }
-
-    .role-card h2 {
-      margin: 0;
-      font-size: clamp(30px, 3.6vw, 56px);
-      line-height: 0.9;
-      letter-spacing: -0.06em;
-      text-transform: uppercase;
-    }
-
-    .stripe {
-      color: var(--accent);
-    }
-
-    .meta-list {
-      display: grid;
-      border-top: 2px solid var(--line);
-    }
-
-    .meta-list div {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      min-width: 0;
-      padding: 12px 14px;
-      border-bottom: 2px solid var(--line);
-      font-size: 14px;
-      text-transform: uppercase;
-    }
-
-    section {
-      border-bottom: 2px solid var(--line);
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      border-bottom: 2px solid var(--line);
-    }
-
-    .section-label {
-      padding: 16px 18px;
-      border-right: 2px solid var(--line);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
       color: var(--muted);
+      font-size: clamp(17px, 1.7vw, 21px);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.5;
     }
 
-    .section-title {
-      margin: 0;
-      padding: 16px 18px;
-      font-size: clamp(30px, 5vw, 76px);
-      line-height: 0.9;
-      letter-spacing: -0.065em;
-      text-transform: uppercase;
+    /* Google colors */
+
+    .google {
+      display: inline-block;
+      white-space: nowrap;
+      font-weight: 500;
     }
 
-    .about-grid {
+    .blue {
+      color: #4285f4;
+    }
+
+    .red {
+      color: #ea4335;
+    }
+
+    .yellow {
+      color: #fbbc05;
+    }
+
+    .green {
+      color: #34a853;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Information rows */
+
+    .details {
+      width: 100%;
+      margin-top: clamp(82px, 12vh, 146px);
+      border-top: 1px solid var(--line);
+    }
+
+    .detail-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .about-copy {
-      padding: clamp(22px, 4vw, 54px);
-      font-size: clamp(22px, 2.6vw, 38px);
-      letter-spacing: -0.045em;
-      border-right: 2px solid var(--line);
-    }
-
-    .about-copy p {
-      margin: 0 0 22px;
-    }
-
-    .about-copy p:last-child {
-      margin-bottom: 0;
-      color: var(--muted);
-    }
-
-    .stack {
-      display: grid;
-    }
-
-    .stack-row {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      border-bottom: 2px solid var(--line);
-      min-height: 90px;
-    }
-
-    .stack-row:last-child {
-      border-bottom: 0;
-    }
-
-    .stack-key {
-      padding: 16px;
-      border-right: 2px solid var(--line);
-      font-size: 13px;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    .stack-value {
-      padding: 16px;
-      font-size: 24px;
-      letter-spacing: -0.035em;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .card {
-      min-height: 280px;
-      padding: 18px;
-      border-right: 2px solid var(--line);
-      border-bottom: 2px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 36px;
-      background: var(--bg);
-    }
-
-    .card:nth-child(3n) {
-      border-right: 0;
-    }
-
-    .card:hover {
-      background: var(--soft);
-    }
-
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      font-size: 13px;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    .card h3 {
-      margin: 0;
-      font-size: clamp(26px, 3vw, 44px);
-      line-height: 0.92;
-      letter-spacing: -0.055em;
-      text-transform: uppercase;
-    }
-
-    .card p {
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.35;
-      letter-spacing: -0.01em;
-    }
-
-    .achievements {
-      display: grid;
-    }
-
-    .achievement {
-      display: grid;
-      grid-template-columns: 110px 1fr auto;
+      grid-template-columns: minmax(160px, 1fr) minmax(0, 1fr);
       align-items: center;
-      gap: 18px;
-      padding: 18px;
-      border-bottom: 2px solid var(--line);
-      font-size: clamp(20px, 3vw, 46px);
-      letter-spacing: -0.055em;
-      text-transform: uppercase;
+      min-height: 75px;
+      gap: 24px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .achievement:last-child {
-      border-bottom: 0;
+    .detail-label,
+    .detail-value {
+      font-size: 15px;
+      line-height: 1.5;
+      letter-spacing: -0.015em;
     }
 
-    .achievement span:first-child,
-    .achievement span:last-child {
-      font-size: 13px;
-      letter-spacing: 0.04em;
+    .detail-label {
+      font-weight: 500;
+    }
+
+    .detail-value {
       color: var(--muted);
+      transition: transform 240ms cubic-bezier(.2, .7, .2, 1);
     }
 
-    .contact {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .detail-row:hover .detail-value {
+      transform: translateX(5px);
     }
 
-    .contact-copy {
-      padding: clamp(24px, 5vw, 70px);
-      border-right: 2px solid var(--line);
-      display: flex;              
-      align-items: center;       
-      justify-content: flex-start;    
-    }   
-
-    .contact-copy h2 {
-      margin: 0;
-      font-size: clamp(44px, 8vw, 112px);
-      line-height: 0.82;
-      letter-spacing: -0.075em;
-      text-transform: uppercase;
+    .divider-symbol {
+      margin: 0 7px;
+      color: var(--faint);
     }
 
-    .contact-links {
-      display: grid;
-    }
+    /* External links */
 
-    .contact-links a {
+    .links {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 96px;
-      padding: 18px;
-      border-bottom: 2px solid var(--line);
-      font-size: clamp(24px, 4vw, 56px);
-      letter-spacing: -0.06em;
-      text-transform: uppercase;
+      flex-wrap: wrap;
+      gap: 9px 28px;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 5px;
+      text-decoration: none;
+      text-underline-offset: 5px;
+      transition: color 180ms ease;
+    }
+
+    .links a:hover {
+      color: var(--text);
+      text-decoration: underline;
+    }
+
+    .links .arrow {
+      display: inline-block;
+      font-size: 13px;
+      transition: transform 180ms ease;
+    }
+
+    .links a:hover .arrow {
+      transform: translate(2px, -2px);
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 0 0 33px;
+      color: var(--faint);
+      font-size: 11px;
+      letter-spacing: 0.015em;
+    }
+
+    /* Subtle entrance animations */
+
+    @keyframes enter {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .masthead {
+      animation: enter 650ms both;
+    }
+
+    .intro {
+      animation: enter 750ms 80ms both;
+    }
+
+    .details {
+      animation: enter 750ms 180ms both;
     }
 
     footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-      padding: 16px 18px;
-      font-size: 13px;
-      text-transform: uppercase;
-      color: var(--muted);
+      animation: enter 650ms 260ms both;
     }
 
-    @media (max-width: 900px) {
-      .hero,
-      .about-grid,
-      .contact,
-      .section-head {
-        grid-template-columns: 1fr;
-      }
+    /* Mobile layout */
 
-      .hero-side,
-      .about-copy,
-      .contact-copy,
-      .section-label {
-        border-left: 0;
-        border-right: 0;
-      }
-
-      .hero-side {
-        border-top: 2px solid var(--line);
-      }
-
-      .section-label {
-        border-bottom: 2px solid var(--line);
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .card,
-      .card:nth-child(3n) {
-        border-right: 0;
-      }
-
-      .achievement {
-        grid-template-columns: 60px 1fr;
-      }
-
-      .achievement span:last-child {
-        display: none;
-      }
-    }
-
-    @media (max-width: 560px) {
+    @media (max-width: 700px) {
       .page {
-        margin: 8px;
+        width: calc(100% - 44px);
       }
 
-      header {
-        align-items: flex-start;
-        flex-direction: column;
+      .masthead {
+        padding-top: 27px;
       }
 
-      .stack-row {
-        grid-template-columns: 1fr;
+      .location {
+        font-size: 10px;
       }
 
-      .stack-key {
-        border-right: 0;
-        border-bottom: 2px solid var(--line);
+      main {
+        justify-content: flex-start;
+        padding: 150px 0 85px;
+      }
+
+      .intro h1 {
+        font-size: clamp(51px, 11.8vw, 84px);
+        letter-spacing: -0.075em;
+        max-width: 650px;
+      }
+
+      .role {
+        margin-top: 23px;
+        font-size: 17px;
+      }
+
+      .details {
+        margin-top: 92px;
+      }
+
+      .detail-row {
+        grid-template-columns: minmax(80px, 0.7fr) minmax(0, 1.3fr);
+        min-height: 70px;
+        gap: 14px;
+      }
+
+      .detail-label,
+      .detail-value {
+        font-size: 14px;
+      }
+
+      .links {
+        gap: 8px 17px;
+      }
+
+      footer {
+        padding-bottom: 25px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      main {
+        padding-top: 115px;
+      }
+
+      .intro h1 {
+        font-size: 49px;
+      }
+
+      .detail-row {
+        grid-template-columns: 90px minmax(0, 1fr);
+      }
+    }
+
+    /* Respect accessibility motion preferences */
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="page">
-    <header>
-      <a href="#top" aria-label="Home">Noah Jaskiewicz</a>
-      <nav aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <a class="monogram" href="/" aria-label="Noah Jaskiewicz, home">
+        NJ.
+      </a>
+
+      <span class="location">SAN FRANCISCO, CA</span>
     </header>
 
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-main">
-          <div>
-            <div class="eyebrow" aria-label="Profile tags">
-              <span class="pill">Software Engineer</span>
-              <span class="pill">Rutgers CS</span>
-              <span class="pill">Backend + Data Engineering</span>
-            </div>
-            <h1 id="hero-title">
-                Noah <span class="nowrap">Jaskiewicz</span>
-              </h1>
-            <p class="subtitle">Software engineer focused on optimizing on trillions of data points.</p>
-          </div>
-          <a class="button" href="#contact">Contact →</a>
-        </div>
+    <!-- Main content -->
+    <main id="main">
 
-        <aside class="hero-side" aria-label="Current role summary">
-          <div class="role-card">
-            <h2>Software Engineer at <span class="stripe">Stripe</span></h2>
-            <p>Builiding reliable data across payments. Making other engineers lives easier by providing optimal data.</p>
-          </div>
-          <div class="meta-list">
-            <div><span>Base</span><span>San Francisco</span></div>
-            <div><span>Focus</span><span>Backend + Data</span></div>
-          </div>
-        </aside>
+      <!-- Name and role -->
+      <section class="intro" aria-labelledby="name">
+        <h1 id="name">Noah Jaskiewicz</h1>
+
+        <p class="role">
+          Software Engineer at
+          <span class="google">
+            <span class="sr-only">Google</span><span aria-hidden="true" class="blue">G</span><span aria-hidden="true" class="red">o</span><span aria-hidden="true" class="yellow">o</span><span aria-hidden="true" class="blue">g</span><span aria-hidden="true" class="green">l</span><span aria-hidden="true" class="red">e</span>
+          </span>.
+        </p>
       </section>
 
-      <section id="about" aria-labelledby="about-title">
-        <div class="section-head">
-          <div class="section-label">01 / About</div>
-          <h2 class="section-title" id="about-title">About</h2>
+      <!-- Information -->
+      <section class="details" aria-label="Work and links">
+
+        <div class="detail-row">
+          <span class="detail-label">Work</span>
+          <span class="detail-value">
+            01 <span class="divider-symbol">—</span> Google
+          </span>
         </div>
-        <div class="about-grid">
-          <div class="about-copy">
-            <p>I studied computer science and math at Rutgers and now work as a software engineer at Stripe.</p>
-            <p>I like working on software where the underlying systems are complex and thought provoking</p>
-          </div>
-          <div class="stack">
-            <div class="stack-row">
-              <div class="stack-key">Languages & Tools</div>
-              <div class="stack-value">Java, Scala, Python, SQL, Spark, Hadoop</div>
-            </div>
-            <div class="stack-row">
-              <div class="stack-key">Interests</div>
-              <div class="stack-value">Backend systems, big data, distributed computing</div>
-            </div>
-            <div class="stack-row">
-              <div class="stack-key">Outside</div>
-              <div class="stack-value">Basketball, board games, soccer, leetcode</div>
-            </div>
-          </div>
+
+        <div class="detail-row">
+          <span class="detail-label">Previously</span>
+          <span class="detail-value">
+            Stripe <span class="divider-symbol">·</span> Amazon
+          </span>
         </div>
+
+        <div class="detail-row">
+          <span class="detail-label">Elsewhere</span>
+
+          <span class="detail-value links">
+            <a
+              href="https://github.com/noahwicz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/noahjaskiewicz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          </span>
+        </div>
+
       </section>
 
-      <section id="work" aria-labelledby="work-title">
-        <div class="section-head">
-          <div class="section-label">02 / Work</div>
-          <h2 class="section-title" id="work-title">Work</h2>
-        </div>
-        <div class="cards">
-          <a class="card" href="https://stripe.com" target="_blank" rel="noreferrer">
-            <div class="card-top"><span>Current</span><span>2026</span></div>
-            <div>
-              <h3>Stripe SWE</h3>
-              <p>Working on data piplines and enrichment for Stripe's core payment data.</p>
-            </div>
-          </a>
-
-          <a class="card" href="https://www.amazon.jobs/content/en/teams/devices-services/project-kuiper" target="_blank" rel="noreferrer">
-            <div class="card-top"><span>Internship</span><span>Amazon</span></div>
-            <div>
-              <h3>Project Kuiper</h3>
-              <p>Worked on software for low Earth orbit satellite internet availability and coverage workflows.</p>
-            </div>
-          </a>
-
-          <a class="card" href="https://github.com/noahwicz" target="_blank" rel="noreferrer">
-            <div class="card-top"><span>Projects</span><span>GitHub</span></div>
-            <div>
-              <h3>Code archive</h3>
-              <p>Experiments, coursework, portfolio pieces, and tools from whatever I was obsessed with that week.</p>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <section id="contact" aria-labelledby="contact-title">
-        <div class="contact">
-          <div class="contact-copy">
-            <h2 id="contact-title">Contact</h2>
-          </div>
-          <div class="contact-links">
-            <a href="mailto:noahjaskiewicz@gmail.com"><span>Email</span><span>→</span></a>
-            <a href="https://github.com/noahwicz" target="_blank" rel="noreferrer"><span>GitHub</span><span>→</span></a>
-            <a href="https://www.linkedin.com/in/noahjaskiewicz" target="_blank" rel="noreferrer"><span>LinkedIn</span><span>→</span></a>
-          </div>
-        </div>
-      </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-      <span>© 2026 Noah Jaskiewicz</span>
-      <span>Software engineer at Stripe</span>
+      © 2026 NOAH JASKIEWICZ
     </footer>
+
   </div>
 </body>
 </html>
